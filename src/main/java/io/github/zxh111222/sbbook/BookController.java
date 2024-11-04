@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("book")
 public class BookController {
-    @GetMapping("/book/add")
+    @GetMapping("/add")
     public String add() {
         return "add";
     }
 
-    @GetMapping("/book/delete")
+    @GetMapping("/delete")
     public String delete() {
         return "delete";
     }
 
-    @GetMapping("/book/edit")
+    @GetMapping("/edit")
     public String edit() {
         return "edit";
     }
 
-    @GetMapping("/book/search")
+    @GetMapping("/search")
     public String search() {
         return "search";
     }
