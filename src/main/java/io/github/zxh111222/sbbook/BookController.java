@@ -30,15 +30,17 @@ public class BookController {
 
 
     @GetMapping("/isbn/{isbn}")
-    public Book isbn(@PathVariable String isbn, @RequestParam(required = false) String apiKey) {
-        System.out.println(apiKey);
-
-        return new Book();
+    public String isbn(@PathVariable String isbn, @RequestParam(required = false) String apiKey) {
+//        System.out.println(apiKey);
+//
+//        return new Book();
 
         //"9787521308716"
 //        String bookInfo = getBookInfoByISBNForApi(isbn);
 //        Book bookInfoByISBNForSpiders = getBookInfoByISBNForSpiders(isbn);
 //
 //        return bookInfoByISBNForSpiders;
+
+        return "isbn/" + isbn;
     }
 }
