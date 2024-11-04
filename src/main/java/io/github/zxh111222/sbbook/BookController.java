@@ -1,17 +1,11 @@
 package io.github.zxh111222.sbbook;
 
 import io.github.zxh111222.sbbook.pojo.Book;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-import static io.github.zxh111222.sbbook.App.getBookInfoByISBNForApi;
-import static io.github.zxh111222.sbbook.App.getBookInfoByISBNForSpiders;
 
 @RestController
+@RequestMapping("book")
 public class BookController {
     @GetMapping("/book/add")
     public String add() {
