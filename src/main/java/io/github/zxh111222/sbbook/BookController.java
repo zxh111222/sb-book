@@ -13,22 +13,22 @@ import static io.github.zxh111222.sbbook.App.getBookInfoByISBNForSpiders;
 
 @RestController
 public class BookController {
-    @GetMapping("/add")
+    @GetMapping("/book/add")
     public String add() {
         return "add";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/book/delete")
     public String delete() {
         return "delete";
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/book/edit")
     public String edit() {
         return "edit";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/book/search")
     public String search() {
         return "search";
     }
