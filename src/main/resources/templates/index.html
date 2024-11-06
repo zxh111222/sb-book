@@ -2,10 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>我的 Book API</title>
+    <title>My Book API</title>
 </head>
 <body>
-我的bookapi！
+<h1>ISBN 公开信息查询接口</h1>
+<h2>ISBN 简介</h2>
+<p>国际标准书号(international Standard Book Number)，简称ISBN，是专门为识别图书等文献而设计的国际编号。ISO于1972年颁布了ISBN国际标准，并在西柏林普鲁士图书馆设立了实施该标准的管理机构--国际ISBN中心。采用ISBN编码系统的出版物有:图书、小册子、缩微出版物、盲文印刷品等。</p>
+<h2>接口详细</h2>
+<h3>基本说明:</h3>
+<p>接口地址:  http://localhost:8080/book/isbn/{ISBN}?apikey={apiKey}</p>
+<p>返回格式:  json</p>
+<p>请求方式:  get</p>
+<p>请求示例:  http://localhost:8080/book/isbn/9787115249494?apikey=1234567890</p>
+<h2>请求参数说明:</h2>
+<table>
+    <tr>
+        <td>名称</td>
+        <td>类型</td>
+        <td>必填</td>
+        <td>说明</td>
+    </tr>
+    <tr>
+        <td>ISBN</td>
+        <td>字符串</td>
+        <td>必填</td>
+        <td>ISBN号</td>
+    </tr>
+    <tr>
+        <td>apikey</td>
+        <td>字符串</td>
+        <td>必填</td>
+        <td>apikey</td>
+    </tr>
+</table>
+<h2>返回参数说明:</h2>
+<table>
+    <tr>
+        <td>名称</td>
+        <td>类型</td>
+        <td>说明</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
 
+
+</table>
 </body>
 </html>
