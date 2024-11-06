@@ -5,11 +5,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.zxh111222.sbbook.pojo.Book;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-public class MyIsbnBookService {
-    public Book getBookByIsbn(String isbn) {
+@Service
+public class MyIsbnBookService implements BookService {
+    @Override
+    public Book getBookByIsbn(String isbn) throws IOException {
         Book book = null;
         String result;
         String apiKey = "sb.250.s.j.b";

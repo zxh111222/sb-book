@@ -8,8 +8,10 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
-public class OtherIsbnBookService {
-    public Book parseBookByIsbn(String isbn) {
+public class OtherIsbnBookService implements BookService{
+
+    @Override
+    public Book getBookByIsbn(String isbn) {
         Book book = new Book();
         book.setIsbn(isbn);
         book.setTitle("牛逼");

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.zxh111222.sbbook.pojo.Book;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -13,6 +14,9 @@ import java.io.IOException;
 @RestController
 @RequestMapping("book")
 public class BookController {
+    @Autowired
+    BookService bookService;
+
     @GetMapping("/add")
     public String add() {
         return "add";
@@ -35,7 +39,7 @@ public class BookController {
 
 
     @GetMapping("/isbn/{isbn}")
-    public Book isbn(@PathVariable String isbn, @RequestParam(required = true) String apikey) {
+    public Book isbn(@PathVariable String isbn, @RequestParam(required = true) String apikey) throws IOException {
 //        System.out.println(apiKey);
 //
 //        return new Book();
@@ -51,7 +55,8 @@ public class BookController {
 //        return bookInfo;
 
 //        Book book = new MyIsbnBookService().getBookByIsbn(isbn);
-        Book book = new OtherIsbnBookService().parseBookByIsbn(isbn);
+//        Book book = new OtherIsbnBookService().getBookByIsbn(isbn);
+        Book book = bookService.getBookByIsbn(isbn);
         return book;
     }
 
