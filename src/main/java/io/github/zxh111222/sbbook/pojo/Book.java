@@ -1,25 +1,33 @@
 package io.github.zxh111222.sbbook.pojo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true, nullable = false)
     private String isbn;
+
+    @Column(nullable = false)
     private String title;
     private String author;
+
+    @Column(columnDefinition = "TEXT")
     private String authorIntro;
+
     private String publisher;
     private String publishDate;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String coverImage;
     private String price;
     private String page;
+
+    @Column(nullable = true)
     private String doubanScore;
 
     public Book() {
