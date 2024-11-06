@@ -10,7 +10,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
+
 
 public class App {
 
@@ -21,8 +21,8 @@ public class App {
 //        System.out.println("接收的数据: " + receivedData);
 //        String bookInfo = getBookInfoByISBNForApi(receivedData);
 //        System.out.println("书籍信息: " + bookInfo);
-        String bookInfo = getBookInfoByISBNForApi("9787521308716");
-        System.out.println("书籍信息: " + bookInfo);
+//        String bookInfo = getBookInfoByISBNForApi("9787521308716");
+//        System.out.println("书籍信息: " + bookInfo);
         Book2 bookInfoByISBNForSpiders = getBookInfoByISBNForSpiders("9787521308716");
     }
 
@@ -101,32 +101,32 @@ public class App {
         return null;
     }
 
-    // api 方式
-    public static String getBookInfoByISBNForApi(String isbn) {
-        String appKey = "ae1718d4587744b0b79f940fbef69e77";
-        String apiUrl = "https://data.isbn.work/openApi/getInfoByIsbn?isbn=";
-        StringBuilder url = new StringBuilder();
-        url.append(apiUrl).append(isbn).append("&appKey=").append(appKey);
-        System.out.println(url);
-
-        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            HttpGet request = new HttpGet(url.toString());
-            try (CloseableHttpResponse response = httpClient.execute(request)) {
-                String jsonResponse = EntityUtils.toString(response.getEntity());
-                JSONObject jsonObject = new JSONObject(jsonResponse);
-
-                // 检查 API 响应状态
-                if (jsonObject.has("data")) {
-                    return jsonObject.getJSONObject("data").toString(2); // 返回书籍信息
-                } else {
-                    return "未找到书籍信息。";
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "获取书籍信息时出错。";
-        }
-    }
+//    // api 方式
+//    public static String getBookInfoByISBNForApi(String isbn) {
+//        String appKey = "ae1718d4587744b0b79f940fbef69e77";
+//        String apiUrl = "https://data.isbn.work/openApi/getInfoByIsbn?isbn=";
+//        StringBuilder url = new StringBuilder();
+//        url.append(apiUrl).append(isbn).append("&appKey=").append(appKey);
+//        System.out.println(url);
+//
+//        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+//            HttpGet request = new HttpGet(url.toString());
+//            try (CloseableHttpResponse response = httpClient.execute(request)) {
+//                String jsonResponse = EntityUtils.toString(response.getEntity());
+//                JSONObject jsonObject = new JSONObject(jsonResponse);
+//
+//                // 检查 API 响应状态
+//                if (jsonObject.has("data")) {
+//                    return jsonObject.getJSONObject("data").toString(2); // 返回书籍信息
+//                } else {
+//                    return "未找到书籍信息。";
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return "获取书籍信息时出错。";
+//        }
+//    }
 
     // 爬虫方式
     public static Book2 getBookInfoByISBNForSpiders(String isbn) {
