@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.zxh111222.sbbook.pojo.Book;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+@Service
 public class OtherIsbnBookService implements BookService{
 
     @Override

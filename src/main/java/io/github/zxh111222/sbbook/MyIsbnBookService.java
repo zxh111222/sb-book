@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-@Service
+
 public class MyIsbnBookService implements BookService {
     @Override
     public Book getBookByIsbn(String isbn) throws IOException {
