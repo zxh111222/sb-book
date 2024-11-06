@@ -43,24 +43,12 @@ public class BookController {
 
     @GetMapping("/isbn/{isbn}")
     public Book isbn(@PathVariable String isbn, @RequestParam(required = false) String apikey) throws IOException {
-//        System.out.println(apiKey);
-//
-//        return new Book();
-
-//        Book bookInfo = null;
-//
-//        //"9787521308716" "1234567890"
-//        if ("123456790".equals(apiKey)){
-//            bookInfo = getBookInfoByISBNForSpiders(isbn);
-//        } else {
-//
-//        }
-//        return bookInfo;
-
-//        Book book = new MyIsbnBookService().getBookByIsbn(isbn);
-//        Book book = new OtherIsbnBookService().getBookByIsbn(isbn);
-        Book book = bookService.getBookByIsbn(isbn);
-        Book saved = bookRepository.save(book);
+        Book book = bookRepository.findByIsbn(isbn).orElse(bookService.getBookByIsbn(isbn));
+        if (book.getId() == null) {
+            System.out.println("数据库中还没有 isbn=" + isbn + " 的图书，执行入库操作");
+            book = bookRepository.save(book);
+            System.out.println("isbn=" + isbn + " 的图书入库成果");
+        }
         return book;
     }
 
