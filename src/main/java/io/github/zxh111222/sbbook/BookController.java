@@ -17,6 +17,9 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    BookRepository bookRepository;
+
     @GetMapping("/add")
     public String add() {
         return "add";
@@ -39,7 +42,7 @@ public class BookController {
 
 
     @GetMapping("/isbn/{isbn}")
-    public Book isbn(@PathVariable String isbn, @RequestParam(required = true) String apikey) throws IOException {
+    public Book isbn(@PathVariable String isbn, @RequestParam(required = false) String apikey) throws IOException {
 //        System.out.println(apiKey);
 //
 //        return new Book();
@@ -57,6 +60,7 @@ public class BookController {
 //        Book book = new MyIsbnBookService().getBookByIsbn(isbn);
 //        Book book = new OtherIsbnBookService().getBookByIsbn(isbn);
         Book book = bookService.getBookByIsbn(isbn);
+        Book saved = bookRepository.save(book);
         return book;
     }
 
@@ -64,4 +68,5 @@ public class BookController {
     public String isbnWithParam(@RequestParam(required = false) String q) {
         return "isbn=" + q;
     }
+
 }
