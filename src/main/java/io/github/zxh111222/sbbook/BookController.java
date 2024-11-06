@@ -50,7 +50,8 @@ public class BookController {
 //        }
 //        return bookInfo;
 
-        Book book = new MyIsbnBookService().getBookByIsbn(isbn);
+//        Book book = new MyIsbnBookService().getBookByIsbn(isbn);
+        Book book = new OtherIsbnBookService().parseBookByIsbn(isbn);
         return book;
     }
 
